@@ -3,13 +3,13 @@
 	"description": "This is just a test config",
 
 	"predictors": [
-		{"uri": "/home/cjack/work/data/reanalysis/era_int_2012/southafrica/shum.southafrica.daymean.nc", "variables": {"q":[900,850,700]}},
-		{"uri": "/home/cjack/work/data/reanalysis/era_int_2012/southafrica/uwnd.southafrica.daymean.nc", "variables": {"u":[900,850,700]}},
-		{"uri": "/home/cjack/work/data/reanalysis/era_int_2012/southafrica/vwnd.southafrica.daymean.nc", "variables": {"v":[900,850,700]}}
+		{"uri": "./data/reanalysis/era_int_2012/southafrica/shum.southafrica.daymean.nc", "variables": {"q":[900,850,700]}},
+		{"uri": "./data/reanalysis/era_int_2012/southafrica/uwnd.southafrica.daymean.nc", "variables": {"u":[900,850,700]}},
+		{"uri": "./data/reanalysis/era_int_2012/southafrica/vwnd.southafrica.daymean.nc", "variables": {"v":[900,850,700]}}
 	],
 
 	"predictands": [
-		{"uri": "/home/cjack/work/data/observed/gridded/watch/Rainf_WFDEI_GPCC_daily_total_1979-2009_africa.eraint_grid.nc", "variables": {"rainf":[]}}
+		{"uri": "./data/observed/gridded/watch/Rainf_WFDEI_GPCC_daily_total_1979-2009_africa.eraint_grid.nc", "variables": {"rainf":[]}}
 	],
 
 	"pipeline":[
