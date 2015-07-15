@@ -1,0 +1,43 @@
+{ 
+	"name": "testing",
+	"description": "This is just a test config",
+
+	"predictors": [
+		{"uri": "/home/cjack/work/data/reanalysis/era_int_2012/southafrica/shum.southafrica.daymean.nc", "variables": {"q":[900,850,700]}},
+		{"uri": "/home/cjack/work/data/reanalysis/era_int_2012/southafrica/uwnd.southafrica.daymean.nc", "variables": {"u":[900,850,700]}},
+		{"uri": "/home/cjack/work/data/reanalysis/era_int_2012/southafrica/vwnd.southafrica.daymean.nc", "variables": {"v":[900,850,700]}}
+	],
+
+	"predictands": [
+		{"uri": "/home/cjack/work/data/observed/gridded/watch/Rainf_WFDEI_GPCC_daily_total_1979-2009_africa.eraint_grid.nc", "variables": {"rainf":[]}}
+	],
+
+	"pipeline":[
+		{ "name": "fit_predictors", 
+			"function":"n_by_n",
+			"inputs": ["predictors", "location"], 
+			"params":{ "n":0 }
+		},
+		{ "name": "test_predictors", 
+			"function":"n_by_n",
+			"inputs": ["predictors", "location"], 
+			"params":{ "n":0, "months":[6,7,8]}
+		},
+		{ "name": "fit_predictands",
+			"function":"n_by_n",
+			"inputs": ["predictands", "location"], 
+			"params":{ "n":0, "startdate":"1979-01-02", "enddate":"2012-12-31", "months":[6,7,8]}
+		},
+		{ "name": "PLS_fit", 
+			"function":"pls_sklearn.fit",
+			"inputs": ["fit_predictors", "fit_predictands"], 
+			"params":{ }
+		},
+		{ "name": "PLS_transform", 
+			"function":"pls_sklearn.transform",
+			"inputs": ["PLS_fit", "extract_predictors"], 
+			"params":{ }
+		}
+
+	]
+}

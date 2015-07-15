@@ -1,0 +1,29 @@
+{ 
+	"name": "testing",
+	"description": "This is just a test config",
+	"predictors": {
+		"n": 0,
+		"sources": {
+			"/home/cjack/work/data/reanalysis/era_int_2012/southafrica/shum.southafrica.daymean.nc": {
+				"variables": {"q":[900,850,700]}
+			},
+			"/home/cjack/work/data/reanalysis/era_int_2012/southafrica/uwnd.southafrica.daymean.nc": {
+				"variables": {"u":[850,700,500]}
+			},
+			"/home/cjack/work/data/reanalysis/era_int_2012/southafrica/vwnd.southafrica.daymean.nc": {
+				"variables": {"v":[850,700,500]}
+			}
+		}
+	},
+	"predictands":{
+		"sources": {
+			"/home/cjack/work/data/observed/station/south_africa_2012/nc/south_africa_2012.pr.nc": {
+				"variables": {"pr":[]}
+			}
+		}
+	},
+	"pipeline":[
+		{"extract": {"n_by_n":{"n":3}}},
+		{"pca":{"retain":{"pcnt_variance":90}}}
+	]
+}
