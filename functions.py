@@ -135,14 +135,23 @@ def n_by_n(predictors, location, n=0, startdate=None, enddate=None, months=None)
 				mod_slices = copy.copy(slices)
 				mod_slices[field.level_dim] = slices[field.level_dim]
 
+
+				mod_slices[-1] = slice(slices[-1].start - n, slices[-1].stop + n)
+				mod_slices[-2] = slice(slices[-2].start - n, slices[-2].stop + n)
+
 				slices = tuple(mod_slices)
-				#print nbyn
-				#print slices
-				#print field[slices].shape
-				#print result[:,column:column + nbyn].shape
+				print nbyn
+				print slices
+				print field[slices].shape
+				print result[:,column:column + nbyn].shape
 				#print field[slices].reshape(time_steps,nbyn).shape
 
-				result[:,column:column + nbyn] = field[slices].reshape(time_steps,nbyn)
+				try:
+					result[:,column:column + nbyn] = field[slices].reshape(time_steps,nbyn)
+				except:
+					logging.error("n_by_n failed for this location")
+					result[:,column:column + nbyn] = np.nan
+
 				column += nbyn
 
 	return result

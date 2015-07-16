@@ -9,13 +9,21 @@ import json
 def fit(predictors, predictands, log=False, **kwargs):
 	
 	model = PLSRegression(n_components=2)
-	model.fit(predictors, predictands)
+	try:
+		model.fit(predictors, predictands)
+	except:
+		return None
 
 	return model
 
 def transform(model, predictors):
 
-	return model.transform(predictors)
+	try:
+		result = model.transform(predictors)
+	except:
+		return None
+
+	return result
 
 class PLS_sklearn:
 

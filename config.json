@@ -16,12 +16,12 @@
 		{ "name": "fit_predictors", 
 			"function":"n_by_n",
 			"inputs": ["predictors", "location"], 
-			"params":{ "n":0 }
+			"params":{ "n":1 }
 		},
 		{ "name": "test_predictors", 
 			"function":"n_by_n",
 			"inputs": ["predictors", "location"], 
-			"params":{ "n":0, "months":[6,7,8]}
+			"params":{ "n":1, "months":[6,7,8]}
 		},
 		{ "name": "fit_predictands",
 			"function":"n_by_n",
