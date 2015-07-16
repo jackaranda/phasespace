@@ -9,7 +9,7 @@ from shapely.geometry import mapping, shape
 
 import netCDF4
 
-sys.path.append('/home/cjack/work/projects/code/pycdm2/')
+sys.path.append('../pycdm2/')
 import pycdm
 
 import pls_sklearn

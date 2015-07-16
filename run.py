@@ -22,7 +22,7 @@ locations = functions.features_to_centroids(predictands[0]['variables'][0]['fiel
 logging.info("{} locations found".format(len(locations)))
 
 
-locations = locations[1400:1403]
+#locations = locations[1400:1403]
 
 print pipeline
 
