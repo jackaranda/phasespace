@@ -80,9 +80,9 @@ def n_by_n(predictors, location, n=0, startdate=None, enddate=None, months=None)
 
 	# Get latitude and longitude
 	longitude, latitude = location.x, location.y
-	print latitude, longitude
 
 	nbyn = pow(n*2+1,2)
+	logging.info("n_by_n({}): {:.2f},{:.2f}".format(nbyn, latitude, longitude))
 
 	# Convert dates to datetimes
 	try:
@@ -117,8 +117,9 @@ def n_by_n(predictors, location, n=0, startdate=None, enddate=None, months=None)
 			else:
 				time_steps = len(realtimes)
 
-	print "will extract {} columns".format(count)
-	print "will extract {} rows".format(time_steps)
+	#print "will extract {} columns".format(count)
+	#print "will extract {} rows".format(time_steps)
+	logging.info("n_by_n({}): {} rows x {} colmns".format(nbyn, time_steps, count))
 
 	result = np.empty((time_steps, count))
 
@@ -140,10 +141,10 @@ def n_by_n(predictors, location, n=0, startdate=None, enddate=None, months=None)
 				mod_slices[-2] = slice(slices[-2].start - n, slices[-2].stop + n)
 
 				slices = tuple(mod_slices)
-				print nbyn
-				print slices
-				print field[slices].shape
-				print result[:,column:column + nbyn].shape
+				#print nbyn
+				#print slices
+				#print field[slices].shape
+				#print result[:,column:column + nbyn].shape
 				#print field[slices].reshape(time_steps,nbyn).shape
 
 				try:
